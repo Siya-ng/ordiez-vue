@@ -2,31 +2,30 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import vueResource from 'vue-resource'
+import VueRouter from 'vue-router'
 import App from './App'
-import router from './router'
-// import VueRouter from 'vue-router'
-Vue.config.productionTip = false
+import Order from './components/order'
+
 
 Vue.use(vueResource)
-// Vue.use(vueRouter)
+Vue.use(VueRouter)
 
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: __dirname,
-//   routes: [
-//     {path: '/', component: App},
-//     {path: '/:order_id/feedback', component: Feedback}
-//   ]
-// })
+const router = new VueRouter({
+  mode: 'history',
+  base: __dirname,
+  routes: [
+    {path: '/', component: Order},
+
+  ]
+})
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  data: {
-    DeliveryOrders: [],
-    user: { name: "Ernesto" }
-  },
-  template: '<App/>',
-  components: { App },
-
-
-})
+  router,
+  template: `
+    <div id="app">
+      <ul>
+        <li><router-link to="/"> Home </router-link></li>
+      </ul>
+      <router-view></router-view>
+    </div>`,
+}).$mount('#app')

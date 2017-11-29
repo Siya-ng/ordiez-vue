@@ -12,7 +12,7 @@
       </div>
       <div v-else>
         <button>Submit Feedback</button>
-        
+
 
       </div>
     </div>
@@ -56,5 +56,13 @@
 </script>
 
 <style scoped>
+.order {
+  display: flex;
+}
+.eachOrder {
+ width: 500px;
 
+ background-color: white;
+ ;
+}
 </style>
