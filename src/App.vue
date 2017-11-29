@@ -1,15 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1 class="header">I'm a vue.js component</h1>
-    <router-view/>
+    <order></order>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import Order from './components/order'
+
+
+  export default {
+    name: 'app',
+    components: {
+      Order
+    }
+  }
+  methods: {
+    getData: () => {
+      this.$http.get("http://https://siya-ordiez.herokuapp.com/orders").then(
+        response => {
+          this.DeliveryOrders = response.data.orders
+          console.log(response.data.orders)
+        },
+        response => {
+          console.log(response)
+        })
+      }
+    }
 </script>
 
 <style>
@@ -20,5 +36,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.order {
+  display: flex;
+}
+.eachOrder {
+ width: 500px;
+
+ background-color: white;
+ ;
 }
 </style>
